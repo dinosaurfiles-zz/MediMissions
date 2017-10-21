@@ -24,10 +24,6 @@ class MainController extends Controller
             $bot->reply('Hello fuck off');
         });
 
-        $botman->hears('register', function (BotMan $bot) {
-            $bot->reply('Hello fuck off');
-        });
-
         $botman->listen();
     }
 
