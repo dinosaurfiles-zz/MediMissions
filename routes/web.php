@@ -15,6 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get("/missions", "MissionsController@index");
+
+Route::get("/lgus", "VolunteersController@index");
+
+Route::get("/volunteers", "VolunteersController@index");
+
 Route::get("/trivia", "MainController@receive")->middleware("verify");
 
 Route::post("trivia", "MainController@receive");
