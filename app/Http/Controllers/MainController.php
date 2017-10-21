@@ -18,8 +18,8 @@ class MainController extends Controller
     public function messenger(){
         $config = [
             'facebook' => [
-                'token' => 'EAAVNB4YktD4BABZCUQJrsPHntwf7u5Ku8SZCc03R3O2IdLVR8chEoFwAJiDZCBoDi1ZBiGr51dHFFPNmCElu1welldcNL3igReFZAYuTMDBNpo26fUZBP3vppgh0vDPjgxZCmkiYG9RQzqFZAZCoTjRamWlYAFlZCONCZBwuZAPcC7tYEgZDZD',
-                'app_secret' => '1325cf16f4f13cd86843f12b20aaa586',
+                'token' => 'EAAa90vPBOwABAJaGGZBXluL5ukDh2VjZCdzP6ONWLzHvZBMVEZBx35zIjNHZCujojU10iehXrD92Ii2jw6W53J2778IWsgItFRnFQGh68Cv1EZBUCGA7GXDBmbPCKyaOmAsc1zjSQxxevnHf8pgbyXZAADEW5BDBUu3vopFRkkoMgZDZD',
+                'app_secret' => '1c72e254cd62a7ebdbb8799df2a9877a',
                 'verification'=>'messengerhere',
             ]
         ];
