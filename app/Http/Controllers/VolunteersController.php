@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+use Session;
+use App\Mission;
 use App\Volunteer;
 use Illuminate\Http\Request;
 
@@ -12,10 +15,19 @@ class VolunteersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return "HEY";
-    }
+
+     public function session($volunteerid){
+         Session::put('volunteerid', $volunteerid);
+         return redirect()->action('VolunteersController@index');
+     }
+
+
+     public function index()
+     {
+         $missions = Mission::where('status', 1)->get();
+         $volunteers = Volunteer::all();
+         return view('volunteer.index', compact('missions', 'volunteers'));
+     }
 
     /**
      * Show the form for creating a new resource.
@@ -33,9 +45,15 @@ class VolunteersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Mission $mission, Volunteer $volunteer)
     {
-        //
+        DB::table('volunteerlist')->insert([
+            'mission_id' => $mission->id,
+            'volunteer_id' => Session::get('volunteerid')
+        ]);
+
+        return redirect()->action('MissionsController@show', ['mission' => $mission->id]
+);
     }
 
     /**

@@ -50,41 +50,10 @@
 
         <!-- Hero content: will be in the middle -->
         <div class="hero-body">
-        <div class="container has-text-centered">
-            <div id="controls"></div>
-            <div id="gmap" style="with:300px;height:500px;"></div>
-        </div>
+            <div class="container has-text-centered">
+                <h1 class="title">Our Top Donors and Volunteers!</h1>
+            </div>
         </div>
         </section>
-        <script type="text/javascript">
-            var Circles = [
-                @foreach ($missions as $mission)
-                {
-                    lat: {{ $mission->lat }},
-                    lon: {{ $mission->lon }},
-                    title: 'Mission #{{ $mission->id }} {{ $mission->name }}',
-                    html: '<a href="/missions/{{ $mission->id }}" style="color: #23D160">{{ $mission->name }}</a>',
-                    circle_options: {
-                        radius: 2500
-                    },
-                    stroke_options: {
-                        strokeColor: '#FF3860',
-                        fillColor: '#eeee00'
-                    },
-                    draggable: false
-                },
-                @endforeach
-            ];
-
-            new Maplace({
-                show_markers: false,
-                locations: Circles,
-                view_all_text: 'Medical Missions Available',
-                type: 'circle',
-                map_options: {
-                    zoom: 10
-                }
-            }).Load();
-        </script>
     </body>
 </html>

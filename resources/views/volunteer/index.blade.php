@@ -21,13 +21,13 @@
                 <a class="navbar-item" href="/">
                   Home
                 </a>
-                <a class="navbar-item is-active" href="/missions">
+                <a class="navbar-item" href="/missions">
                   Missions
                 </a>
                 <a class="navbar-item" href="/lgus">
                   LGUs
                 </a>
-                <a class="navbar-item" href="/volunteers">
+                <a class="navbar-item is-active" href="/volunteers">
                   Volunteers
                 </a>
                 <a class="navbar-item">
@@ -64,8 +64,17 @@
                         <h4>{{ $mission->unit }}</h4>
                         <h2 class="subtitle">{{ $mission->contact_person }} . {{ $mission->contact_no }}</h2>
                         <p class="content">{!! $mission->details !!}</p>
+
+                        <a class="button is-success is-inverted" href="/volunteers/{{ $mission->id }}/{{ Session::get('volunteerid') }}">
+                            Volunteer Now!
+                        </a>
                     </div>
                     @endforeach
+
+                    @foreach ($volunteers as $volunteer)
+                        <a href="/volunteers/session/{{ $volunteer->id }}">{{ $volunteer->name }}</a>&nbsp | &nbsp
+                    @endforeach
+                    <span style="color: red">{{ Session::get('volunteerid') }}</span>
                 </div>
             </div>
         </section>

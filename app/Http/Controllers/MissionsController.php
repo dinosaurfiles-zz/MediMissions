@@ -28,7 +28,7 @@ class MissionsController extends Controller
      */
     public function create()
     {
-        //
+        return view('mission.add');
     }
 
     /**
@@ -39,7 +39,21 @@ class MissionsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('missions')->insert([
+            'name' => $request->name,
+            'details' => $request->details,
+            'req_from_date' => $request->from_date,
+            'req_to_date' => $request->to_date,
+            'lat' => $request->lat,
+            'lon' => $request->lon,
+            'access_token' => 'bleh',
+            'unit' => 'Iloilo Central Health Unit',
+            'contact_person' => 'James Ledesma',
+            'contact_no' => '09xx-xxx-xxx',
+            'status' => 1
+        ]);
+
+        return redirect()->action('MissionsController@index');
     }
 
     /**
@@ -50,14 +64,13 @@ class MissionsController extends Controller
      */
     public function show(Mission $mission)
     {
-        // $equipments = Equipment::where('mission_id', $mission->id)->get();
-        // $equipmentlist = DB::table('equipmentlist')->where('mission_id', $mission->id)->get();
-
         $equipments = DB::table('equipments')
             ->leftjoin('equipmentlist', function($join){
                 $join->on('equipments.mission_id', '=', 'equipmentlist.mission_id');
             })
             ->get();
+
+        $equipments = $equipments->where('mission_id', $mission->id);
 
         $volunteers = DB::table('volunteers')
             ->leftjoin('volunteerlist', function($join){
@@ -65,15 +78,7 @@ class MissionsController extends Controller
             })
             ->get();
 
-        // dd($equipments);
-
-        // $equipmentlisting = DB::table('equipmentlist')->where('mission_id', $mission->id)->get();
-        // dd($equipments);
-        // $data = array(
-        //     'mission' => $mission,
-        //     'equipments' => $equipments,
-        // );
-        // error_log($equipments);
+        $volunteers = $volunteers->where('mission_id', $mission->id);
         return view('mission.view', compact('mission', 'equipments', 'volunteers'));
     }
 

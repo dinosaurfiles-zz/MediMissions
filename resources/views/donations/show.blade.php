@@ -64,51 +64,15 @@
                         <h2 class="subtitle">{{ $mission->contact_person }} . {{ $mission->contact_no }}</h2>
                         <p class="content">{!! $mission->details !!}</p>
                         <br>
-                        <h1 class="title">Map:</h1>
-                        <div class="container has-text-centered">
-                            <div id="controls"></div>
-                            <div id="gmap" style="width:500px;height:300px;"></div>
-                        </div>
-                        <script type="text/javascript">
-                            var Circles = [
-                                {
-                                    lat: {{ $mission->lat }},
-                                    lon: {{ $mission->lon }},
-                                    title: 'Mission #{{ $mission->id }} {{ $mission->name }}',
-                                    html: '<a href="/missions/{{ $mission->id }}" style="color: #23D160">{{ $mission->name }}</a>',
-                                    circle_options: {
-                                        radius: 5000
-                                    },
-                                    stroke_options: {
-                                        strokeColor: '#FF3860',
-                                        fillColor: '#eeee00'
-                                    },
-                                    draggable: false
-                                },
-                            ];
-
-                            new Maplace({
-                                show_markers: false,
-                                locations: Circles,
-                                view_all_text: 'Medical Missions Available',
-                                type: 'circle',
-                                map_options: {
-                                    zoom: 9
-                                }
-                            }).Load();
-                        </script>
-
-                        <br>
                         <h1 class="title">Donated Items:</h1>
                         <table class="table is-striped is-fullwidth">
                             <thead>
                                 <tr>
-                                    <th>Item Name</th>
-                                    <th>Count/PCs/Worth</th>
+                                    <th>Donation Name</th>
+                                    <th>Current Count</th>
                                 </tr>
                             </thead>
                             <tbody>
-
                                 @foreach ($equipments as $equipment)
                                     <tr>
                                         <td>{{ $equipment->name }}</td>
@@ -118,27 +82,19 @@
                             </tbody>
                         </table>
 
-                        <br>
+                        <h2 class="subtitle">New Donation:</h2>
 
-                        <h1 class="title">Volunteers:</h1>
-                        <table class="table is-striped is-fullwidth">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($volunteers as $volunteer)
-                                <tr>
-                                    <td>{{ $volunteer->name }}</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                        <h3>Actions:</h3>
-                        <br>
-                        <a class="button is-info is-inverted" href="/missions/{{ $mission->id }}/auth/">Edit</a>
-                        <a class="button is-info is-inverted" href="/donate/{{ $mission->id }}">Donate</a>
+                        <form class="" action="/donate/{{ $mission->id }}" method="post">
+                            <div class="columns">
+                                <input type="hidden" name="missionid" value="{{ $mission->id }}">
+                              <div class="column is-10"><input class="input is-success" type="text" placeholder="Donation name" name="name"></div>
+                              <div class="column is-2"><input class="input is-success" type="number" placeholder="Count/Worth" name="count"></div>
+                        </div>
+                        <div class="columns">
+                          <div class="column is-2 is-offset-10"><button class="button is-success is-inverted">Add Donation</button>
+                        </div>
+                        </form>
+
                     </div>
                 </div>
             </div>
