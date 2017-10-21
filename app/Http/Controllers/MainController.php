@@ -25,11 +25,11 @@ class MainController extends Controller
         ];
 
         $botman = BotManFactory::create($config);
-        // $botman->hears('hello', function (BotMan $bot) {
-        //     $bot->reply('Hello fuck off');
-        // });
-        //
-        // $botman->listen();
+        $botman->hears('hello', function (BotMan $bot) {
+            $bot->reply('Hello fuck off');
+        });
+
+        $botman->listen();
     }
 
     public function receive(Request $request)
