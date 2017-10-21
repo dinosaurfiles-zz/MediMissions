@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <link rel="stylesheet" href="{{ URL::asset('css/bulma.css') }}">
-        <link rel="stylesheet" href="{{ URL::asset('css/font-awesome.min.css') }}">
-        <link rel="stylesheet" href="{{ URL::asset('css/custompages.css') }}">
-        <meta charset="utf-8">
-        <title>MediMissions</title>
-    </head>
-    <body>
+@extends('layouts.master')
+
+@section('content')
         <section class="hero is-success is-fullheight">
         <!-- Hero head: will stick at the top -->
         <!-- <div class="hero-head"> -->
@@ -50,11 +43,23 @@
                 <div class="container">
                     @foreach ($missions as $mission)
                     <div class="mission-container">
-                        <h1 class="title" style="margin-bottom: 4px"><a href="/mission/{{ $mission->id }}">{{ $mission->name }} </a>
+                        <h1 class="title" style="margin-bottom: 4px"><a href="/missions/{{ $mission->id }}">{{ $mission->name }} </a>
                         @if ($mission->status == 1)
-                            <button class="button is-danger is-inverted">Available</button></h1>
+                            <button class="button is-danger is-inverted">
+                                <span class="icon">
+                                    <i class="fa fa-spinner"></i>
+                                </span>
+                                &nbsp Available
+                            </button>
+                        </h1>
                         @else
-                            <button class="button is-success is-inverted">Success</button></h1>
+                            <button class="button is-success is-inverted">
+                                <span class="icon">
+                                    <i class="fa fa-check"></i>
+                                </span>
+                                &nbsp Success
+                            </button>
+                        </h1>
                         @endif
                         <h4>{{ $mission->unit }}</h4>
                         <h2 class="subtitle">{{ $mission->contact_person }} . {{ $mission->contact_no }}</h2>
@@ -64,5 +69,4 @@
                 </div>
             </div>
         </section>
-    </body>
-</html>
+@endsection('content')

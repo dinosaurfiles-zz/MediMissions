@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVolunteersTable extends Migration
+class CreateEquipmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateVolunteersTable extends Migration
      */
     public function up()
     {
-        Schema::create('volunteers', function (Blueprint $table) {
+        Schema::create('equipments', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('mission_id');
             $table->string('name');
-            $table->integer('type');
-            $table->string('social_link');
+            $table->integer('need_count');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateVolunteersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('volunteers');
+        Schema::dropIfExists('equipments');
     }
 }

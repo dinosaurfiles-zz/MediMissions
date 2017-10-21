@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get("/missions", "MissionsController@index");
+Route::get("/missions/{mission}", "MissionsController@show");
 
 Route::get("/lgus", "VolunteersController@index");
 
