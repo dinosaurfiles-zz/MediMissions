@@ -12,14 +12,13 @@ class MainController extends Controller
     public function messenger(){
         $config = [
             'facebook' => [
-                'token' => 'EAAVNB4YktD4BAEF4Nug104tF8imZBWIZC9n4Xpcb32gha4gj2e029JbtACjJLNCii27ZAkBLTtjNFnlWv8xn5KXUKO5YQZCHSCcTvGlDuWWoeHIEFVy5ENb9XXNDcrh98AGZCHjU0h6vzOH1kipYKQqqeirjryeSL4Ly8IHBQWwZDZD',
+                'token' => 'EAAVNB4YktD4BABZCUQJrsPHntwf7u5Ku8SZCc03R3O2IdLVR8chEoFwAJiDZCBoDi1ZBiGr51dHFFPNmCElu1welldcNL3igReFZAYuTMDBNpo26fUZBP3vppgh0vDPjgxZCmkiYG9RQzqFZAZCoTjRamWlYAFlZCONCZBwuZAPcC7tYEgZDZD',
                 'app_secret' => '1325cf16f4f13cd86843f12b20aaa586',
                 'verification'=>'messengerhere',
             ]
         ];
 
         $botman = BotManFactory::create($config);
-        // 
         // $botman->hears('hello', function (BotMan $bot) {
         //     $bot->reply('Hello fuck off');
         // });
