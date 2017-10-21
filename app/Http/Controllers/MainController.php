@@ -24,6 +24,8 @@ class MainController extends Controller
         });
 
         $botman->listen();
+
+        echo "YEY!";
     }
 
     public function receive(Request $request)
