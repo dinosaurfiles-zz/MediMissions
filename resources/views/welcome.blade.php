@@ -39,7 +39,7 @@
                 <a class="navbar-item" href="/volunteers">
                   Volunteers
                 </a>
-                <a class="navbar-item">
+                <a class="navbar-item" href="/promotions">
                     About
                 </a>
               </div>
