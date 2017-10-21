@@ -19,13 +19,16 @@ class MainController extends Controller
         ];
 
         $botman = BotManFactory::create($config);
+
         $botman->hears('hello', function (BotMan $bot) {
-            $bot->reply('Hello yourself.');
+            $bot->reply('Hello fuck off');
+        });
+
+        $botman->hears('register', function (BotMan $bot) {
+            $bot->reply('Hello fuck off');
         });
 
         $botman->listen();
-
-        echo "YEY!";
     }
 
     public function receive(Request $request)
