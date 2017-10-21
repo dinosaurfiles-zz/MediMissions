@@ -31,6 +31,8 @@ Route::post("/donate/{mission}", "EquipmentsController@store");
 Route::get('/promotions', function () {
     return view('promotions');
 });
-// Route::get("/trivia", "MainController@receive")->middleware("verify");
-//
-// Route::post("/trivia", "MainController@receive");
+
+// Bot
+Route::get("/trivia", "MainController@receive")->middleware("verify");
+
+Route::post("/trivia", "MainController@receive");
