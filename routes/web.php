@@ -14,6 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get("/messenger", "MainController@messenger");
 
 Route::get("/missions", "MissionsController@index");
 Route::get("/missions/{mission}", "MissionsController@show");
