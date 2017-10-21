@@ -24,4 +24,4 @@ Route::get("/volunteers", "VolunteersController@index");
 
 Route::get("/trivia", "MainController@receive")->middleware("verify");
 
-Route::post("trivia", "MainController@receive");
+Route::post("/trivia", "MainController@receive");
