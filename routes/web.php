@@ -15,6 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/trivia', "MainController@receive")->middleware("verify");
+Route::get("/trivia", "MainController@receive")->middleware("verify");
 
-Route::post('/trivia', "MainController@receive");
+Route::post("trivia", "MainController@receive");

@@ -14,11 +14,11 @@ class MainController extends Controller
         $this->sendTextMessage($id, "Hello");
     }
 
-    private function sendTextMessage($recipeintId, $messageText)
+    private function sendTextMessage($recipientId, $messageText)
     {
         $messageData = [
             "recipient" => [
-                "id" => $recipeintId
+                "id" => $recipientId
             ],
             "message" => [
                 "text" => $messageText
