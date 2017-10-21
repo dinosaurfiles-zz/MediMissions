@@ -17,7 +17,12 @@
           <div class="container">
             <div class="navbar-brand">
               <a class="navbar-item">
-                <span style="font-size: 30px">MediMissions</span>
+                <span style="font-size: 30px">
+                    Medi
+                    <span class="icon" style="margin-left: -5px">
+                        <i class="fa fa-plus"></i>
+                    </span>Missions
+                </span>
               </a>
               <span class="navbar-burger burger" data-target="navbarMenuHeroC">
                 <span></span>
