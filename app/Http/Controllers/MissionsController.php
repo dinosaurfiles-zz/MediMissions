@@ -83,9 +83,14 @@ class MissionsController extends Controller
      * @param  \App\Mission  $mission
      * @return \Illuminate\Http\Response
      */
+    public function auth(Mission $mission)
+    {
+        return view('mission.auth', compact('mission'));
+    }
+
     public function edit(Mission $mission)
     {
-        //
+        return view('mission.edit', compact('mission'));
     }
 
     /**

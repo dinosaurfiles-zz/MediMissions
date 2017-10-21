@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mission;
 use Illuminate\Http\Request;
 
 use BotMan\BotMan\BotMan;
@@ -9,6 +10,11 @@ use BotMan\BotMan\BotManFactory;
 
 class MainController extends Controller
 {
+    public function index(){
+        $missions = Mission::all();
+        return view('welcome', compact('missions'));
+    }
+
     public function messenger(){
         $config = [
             'facebook' => [

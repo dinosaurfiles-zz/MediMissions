@@ -58,34 +58,22 @@
         </section>
         <script type="text/javascript">
             var Circles = [
+                @foreach ($missions as $mission)
                 {
-                    lat: 11.1452294,
-                    lon: 122.5059695,
-                    title: 'Dental Mission',
-                    html: 'Change my size',
+                    lat: {{ $mission->lat }},
+                    lon: {{ $mission->lon }},
+                    title: 'Mission #{{ $mission->id }} {{ $mission->name }}',
+                    html: '<a href="/missions/{{ $mission->id }}" style="color: #23D160">{{ $mission->name }}</a>',
                     circle_options: {
                         radius: 2500
                     },
                     stroke_options: {
-                        strokeColor: '#aaaa00',
+                        strokeColor: '#FF3860',
                         fillColor: '#eeee00'
                     },
                     draggable: false
                 },
-                {
-                    lat: 11.1583421,
-                    lon: 122.6151434,
-                    title: 'Dental Mission',
-                    html: 'Change my size',
-                    circle_options: {
-                        radius: 2500
-                    },
-                    stroke_options: {
-                        strokeColor: '#aa0000',
-                        fillColor: '#ee0000'
-                    },
-                    draggable: false
-                },
+                @endforeach
             ];
 
             new Maplace({

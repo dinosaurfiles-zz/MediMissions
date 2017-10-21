@@ -11,13 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', "MainController@index");
 Route::get("/messenger", "MainController@messenger");
 
 Route::get("/missions", "MissionsController@index");
 Route::get("/missions/{mission}", "MissionsController@show");
+Route::get("/missions/{mission}/auth", "MissionsController@auth");
+Route::get("/missions/{mission}/edit", "MissionsController@edit");
 
 Route::get("/lgus", "VolunteersController@index");
 

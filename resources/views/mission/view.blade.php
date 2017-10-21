@@ -64,7 +64,41 @@
                         <h2 class="subtitle">{{ $mission->contact_person }} . {{ $mission->contact_no }}</h2>
                         <p>{{ $mission->details }}</p>
                         <br>
+                        <h1 class="title">Map:</h1>
+                        <div class="container has-text-centered">
+                            <div id="controls"></div>
+                            <div id="gmap" style="width:500px;height:300px;"></div>
+                        </div>
+                        <script type="text/javascript">
+                            var Circles = [
+                                {
+                                    lat: {{ $mission->lat }},
+                                    lon: {{ $mission->lon }},
+                                    title: 'Mission #{{ $mission->id }} {{ $mission->name }}',
+                                    html: '<a href="/missions/{{ $mission->id }}" style="color: #23D160">{{ $mission->name }}</a>',
+                                    circle_options: {
+                                        radius: 5000
+                                    },
+                                    stroke_options: {
+                                        strokeColor: '#FF3860',
+                                        fillColor: '#eeee00'
+                                    },
+                                    draggable: false
+                                },
+                            ];
 
+                            new Maplace({
+                                show_markers: false,
+                                locations: Circles,
+                                view_all_text: 'Medical Missions Available',
+                                type: 'circle',
+                                map_options: {
+                                    zoom: 9
+                                }
+                            }).Load();
+                        </script>
+
+                        <br>
                         <h1 class="title">Needed Equipments/Tools:</h1>
                         <table class="table is-striped is-fullwidth">
                             <thead>
@@ -105,6 +139,9 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <h3>Actions:</h3>
+                        <br>
+                        <a class="button is-info is-inverted" href="/missions/{{ $mission->id }}/auth/">Edit</a>
                     </div>
                 </div>
             </div>
